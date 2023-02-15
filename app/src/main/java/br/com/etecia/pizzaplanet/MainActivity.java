@@ -6,10 +6,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    String tituloModelo[] = {"Mussarela", "Portuguesa", "Calabresa"};
+    String subtituloModelo[] = {"Queijos", "X-tudo", "la ele"};
+    int imgModelo[] = {R.drawable.mussarela, R.drawable.port, R.drawable.calabresa};
+    String media[] = {"5.0", "4.0", "2.0"};
     ListView idlistView;
 
     @Override
@@ -25,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 0;
+            return imgModelo.length;
         }
 
         @Override
@@ -40,7 +46,24 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            return null;
+            ImageView imagemModelo;
+            TextView Titulo, Subtitulo, Media;
+            RatingBar rtbar;
+
+            View v = getLayoutInflater().inflate(R.layout.modelo_cardapio, null);
+            imagemModelo = v.findViewById(R.id.ImgModelo);
+            Titulo = v.findViewById(R.id.TituloModelo);
+            Subtitulo = v.findViewById(R.id.subtituloModelo);
+            Media = v.findViewById(R.id.mediaRatingBarModelo);
+
+            imagemModelo.setImageResource(imgModelo[position]);
+            Titulo.setText(tituloModelo[position]);
+            Subtitulo.setText(subtituloModelo[position]);
+            Media.setText(media[position]);
+
+
+
+            return v;
         }
     }
 }
